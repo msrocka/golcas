@@ -1,4 +1,4 @@
-package schema
+package ld
 
 import (
 	"io/ioutil"

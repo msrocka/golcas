@@ -1,4 +1,4 @@
-package schema
+package ld
 
 // FlowPropertyFactor http://greendelta.github.io/olca-schema/html/FlowPropertyFactor.html
 type FlowPropertyFactor struct {

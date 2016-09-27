@@ -1,4 +1,4 @@
-package schema
+package ld
 
 // ModelType enumeration
 type ModelType string
