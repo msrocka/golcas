@@ -31,6 +31,33 @@ func ReadSource(data []byte) (*Source, error) {
 	return v, nil
 }
 
+// ReadParameter converts the given bytes into a Parameter
+func ReadParameter(data []byte) (*Parameter, error) {
+	v := &Parameter{}
+	if err := json.Unmarshal(data, v); err != nil {
+		return nil, err
+	}
+	return v, nil
+}
+
+// ReadLocation converts the given bytes into a Location
+func ReadLocation(data []byte) (*Location, error) {
+	v := &Location{}
+	if err := json.Unmarshal(data, v); err != nil {
+		return nil, err
+	}
+	return v, nil
+}
+
+// ReadSocialIndicator converts the given bytes into a SocialIndicator
+func ReadSocialIndicator(data []byte) (*SocialIndicator, error) {
+	v := &SocialIndicator{}
+	if err := json.Unmarshal(data, v); err != nil {
+		return nil, err
+	}
+	return v, nil
+}
+
 // ReadUnitGroup converts the given bytes into a UnitGroup
 func ReadUnitGroup(data []byte) (*UnitGroup, error) {
 	v := &UnitGroup{}

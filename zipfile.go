@@ -38,7 +38,7 @@ func (f *ZipFile) Read() ([]byte, error) {
 }
 
 // ReadCategory reads a Category from the zip file
-func (f *ZipFile) ReadCategory(data []byte) (*Category, error) {
+func (f *ZipFile) ReadCategory() (*Category, error) {
 	data, err := f.Read()
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (f *ZipFile) ReadCategory(data []byte) (*Category, error) {
 }
 
 // ReadActor reads a Actor from the zip file
-func (f *ZipFile) ReadActor(data []byte) (*Actor, error) {
+func (f *ZipFile) ReadActor() (*Actor, error) {
 	data, err := f.Read()
 	if err != nil {
 		return nil, err
@@ -56,7 +56,7 @@ func (f *ZipFile) ReadActor(data []byte) (*Actor, error) {
 }
 
 // ReadSource reads a Source from the zip file
-func (f *ZipFile) ReadSource(data []byte) (*Source, error) {
+func (f *ZipFile) ReadSource() (*Source, error) {
 	data, err := f.Read()
 	if err != nil {
 		return nil, err
@@ -64,8 +64,35 @@ func (f *ZipFile) ReadSource(data []byte) (*Source, error) {
 	return ReadSource(data)
 }
 
+// ReadParameter reads a Parameter from the zip file
+func (f *ZipFile) ReadParameter() (*Parameter, error) {
+	data, err := f.Read()
+	if err != nil {
+		return nil, err
+	}
+	return ReadParameter(data)
+}
+
+// ReadSocialIndicator reads a SocialIndicator from the zip file
+func (f *ZipFile) ReadSocialIndicator() (*SocialIndicator, error) {
+	data, err := f.Read()
+	if err != nil {
+		return nil, err
+	}
+	return ReadSocialIndicator(data)
+}
+
+// ReadLocation reads a Location from the zip file
+func (f *ZipFile) ReadLocation() (*Location, error) {
+	data, err := f.Read()
+	if err != nil {
+		return nil, err
+	}
+	return ReadLocation(data)
+}
+
 // ReadUnitGroup reads a UnitGroup from the zip file
-func (f *ZipFile) ReadUnitGroup(data []byte) (*UnitGroup, error) {
+func (f *ZipFile) ReadUnitGroup() (*UnitGroup, error) {
 	data, err := f.Read()
 	if err != nil {
 		return nil, err
@@ -74,7 +101,7 @@ func (f *ZipFile) ReadUnitGroup(data []byte) (*UnitGroup, error) {
 }
 
 // ReadFlowProperty reads a FlowProperty from the zip file
-func (f *ZipFile) ReadFlowProperty(data []byte) (*FlowProperty, error) {
+func (f *ZipFile) ReadFlowProperty() (*FlowProperty, error) {
 	data, err := f.Read()
 	if err != nil {
 		return nil, err
@@ -83,7 +110,7 @@ func (f *ZipFile) ReadFlowProperty(data []byte) (*FlowProperty, error) {
 }
 
 // ReadFlow reads a Flow from the zip file
-func (f *ZipFile) ReadFlow(data []byte) (*Flow, error) {
+func (f *ZipFile) ReadFlow() (*Flow, error) {
 	data, err := f.Read()
 	if err != nil {
 		return nil, err
@@ -92,7 +119,7 @@ func (f *ZipFile) ReadFlow(data []byte) (*Flow, error) {
 }
 
 // ReadProcess reads a Process from the zip file
-func (f *ZipFile) ReadProcess(data []byte) (*Process, error) {
+func (f *ZipFile) ReadProcess() (*Process, error) {
 	data, err := f.Read()
 	if err != nil {
 		return nil, err
@@ -101,7 +128,7 @@ func (f *ZipFile) ReadProcess(data []byte) (*Process, error) {
 }
 
 // ReadImpactCategory reads a ImpactCategory from the zip file
-func (f *ZipFile) ReadImpactCategory(data []byte) (*ImpactCategory, error) {
+func (f *ZipFile) ReadImpactCategory() (*ImpactCategory, error) {
 	data, err := f.Read()
 	if err != nil {
 		return nil, err
@@ -110,7 +137,7 @@ func (f *ZipFile) ReadImpactCategory(data []byte) (*ImpactCategory, error) {
 }
 
 // ReadImpactMethod reads a ImpactMethod from the zip file
-func (f *ZipFile) ReadImpactMethod(data []byte) (*ImpactMethod, error) {
+func (f *ZipFile) ReadImpactMethod() (*ImpactMethod, error) {
 	data, err := f.Read()
 	if err != nil {
 		return nil, err
