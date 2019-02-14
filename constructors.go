@@ -2,8 +2,8 @@ package ld
 
 // NewReference creates a RootEntity with the given id, type, and name.
 // This function can be used for creating references to root entities.
-func NewReference(eType, id, name string) *RootEntity {
-	e := RootEntity{}
+func NewReference(eType, id, name string) *Ref {
+	e := Ref{}
 	e.Type = eType
 	e.ID = id
 	e.Name = name

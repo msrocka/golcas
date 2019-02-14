@@ -3,45 +3,45 @@ package ld
 // ProcessDocumentation http://greendelta.github.io/olca-schema/html/ProcessDocumentation.html
 type ProcessDocumentation struct {
 	Entity
-	TimeDescription              string       `json:"timeDescription,omitempty"`
-	ValidUntil                   string       `json:"validUntil,omitempty"`
-	ValidFrom                    string       `json:"validFrom,omitempty"`
-	TechnologyDescription        string       `json:"technologyDescription,omitempty"`
-	DataCollectionDescription    string       `json:"dataCollectionDescription,omitempty"`
-	CompletenessDescription      string       `json:"completenessDescription,omitempty"`
-	DataSelectionDescription     string       `json:"dataSelectionDescription,omitempty"`
-	ReviewDetails                string       `json:"reviewDetails,omitempty"`
-	DataTreatmentDescription     string       `json:"dataTreatmentDescription,omitempty"`
-	InventoryMethodDescription   string       `json:"inventoryMethodDescription,omitempty"`
-	ModelingConstantsDescription string       `json:"modelingConstantsDescription,omitempty"`
-	Reviewer                     *RootEntity  `json:"reviewer,omitempty"`
-	SamplingDescription          string       `json:"samplingDescription,omitempty"`
-	Sources                      []RootEntity `json:"sources,omitempty"`
-	RestrictionsDescription      string       `json:"restrictionsDescription,omitempty"`
-	Copyright                    bool         `json:"copyright"`
-	CreationDate                 string       `json:"creationDate,omitempty"`
-	DataDocumentor               *RootEntity  `json:"dataDocumentor,omitempty"`
-	DataGenerator                *RootEntity  `json:"dataGenerator,omitempty"`
-	DataSetOwner                 *RootEntity  `json:"dataSetOwner,omitempty"`
-	IntendedApplication          string       `json:"intendedApplication,omitempty"`
-	ProjectDescription           string       `json:"projectDescription,omitempty"`
-	Publication                  *RootEntity  `json:"publication,omitempty"`
-	GeographyDescription         string       `json:"geographyDescription,omitempty"`
+	TimeDescription              string `json:"timeDescription,omitempty"`
+	ValidUntil                   string `json:"validUntil,omitempty"`
+	ValidFrom                    string `json:"validFrom,omitempty"`
+	TechnologyDescription        string `json:"technologyDescription,omitempty"`
+	DataCollectionDescription    string `json:"dataCollectionDescription,omitempty"`
+	CompletenessDescription      string `json:"completenessDescription,omitempty"`
+	DataSelectionDescription     string `json:"dataSelectionDescription,omitempty"`
+	ReviewDetails                string `json:"reviewDetails,omitempty"`
+	DataTreatmentDescription     string `json:"dataTreatmentDescription,omitempty"`
+	InventoryMethodDescription   string `json:"inventoryMethodDescription,omitempty"`
+	ModelingConstantsDescription string `json:"modelingConstantsDescription,omitempty"`
+	Reviewer                     *Ref   `json:"reviewer,omitempty"`
+	SamplingDescription          string `json:"samplingDescription,omitempty"`
+	Sources                      []Ref  `json:"sources,omitempty"`
+	RestrictionsDescription      string `json:"restrictionsDescription,omitempty"`
+	Copyright                    bool   `json:"copyright"`
+	CreationDate                 string `json:"creationDate,omitempty"`
+	DataDocumentor               *Ref   `json:"dataDocumentor,omitempty"`
+	DataGenerator                *Ref   `json:"dataGenerator,omitempty"`
+	DataSetOwner                 *Ref   `json:"dataSetOwner,omitempty"`
+	IntendedApplication          string `json:"intendedApplication,omitempty"`
+	ProjectDescription           string `json:"projectDescription,omitempty"`
+	Publication                  *Ref   `json:"publication,omitempty"`
+	GeographyDescription         string `json:"geographyDescription,omitempty"`
 }
 
 // Exchange http://greendelta.github.io/olca-schema/html/Exchange.html
 type Exchange struct {
 	Entity
 	AvoidedProduct        bool         `json:"avoidedProduct"`
-	Flow                  *RootEntity  `json:"flow,omitempty"`
-	FlowProperty          *RootEntity  `json:"flowProperty,omitempty"`
+	Flow                  *FlowRef     `json:"flow,omitempty"`
+	FlowProperty          *Ref         `json:"flowProperty,omitempty"`
 	Input                 bool         `json:"input"`
 	QuantitativeReference bool         `json:"quantitativeReference"`
 	BaseUncertainty       float64      `json:"baseUncertainty"`
-	Provider              *RootEntity  `json:"provider,omitempty"`
+	Provider              *Ref         `json:"provider,omitempty"` // TODO: ProcessRef
 	Amount                float64      `json:"amount"`
 	AmountFormula         string       `json:"amountFormula,omitempty"`
-	Unit                  *RootEntity  `json:"unit,omitempty"`
+	Unit                  *Ref         `json:"unit,omitempty"`
 	PedigreeUncertainty   string       `json:"pedigreeUncertainty,omitempty"`
 	Uncertainty           *Uncertainty `json:"uncertainty,omitempty"`
 	Comment               string       `json:"comment,omitempty"`
@@ -59,13 +59,13 @@ type AllocationFactor struct {
 // SocialAspect http://greendelta.github.io/olca-schema/html/SocialAspect.html
 type SocialAspect struct {
 	Entity
-	Indicator     *RootEntity `json:"socialIndicator,omitempty"`
-	ActivityValue float64     `json:"activityValue"`
-	RawAmount     string      `json:"rawAmount,omitempty"`
-	RiskLevel     RiskLevel   `json:"riskLevel,omitempty"`
-	Comment       string      `json:"comment,omitempty"`
-	Source        *RootEntity `json:"source,omitempty"`
-	Quality       string      `json:"quality,omitempty"`
+	Indicator     *Ref      `json:"socialIndicator,omitempty"`
+	ActivityValue float64   `json:"activityValue"`
+	RawAmount     string    `json:"rawAmount,omitempty"`
+	RiskLevel     RiskLevel `json:"riskLevel,omitempty"`
+	Comment       string    `json:"comment,omitempty"`
+	Source        *Ref      `json:"source,omitempty"`
+	Quality       string    `json:"quality,omitempty"`
 }
 
 // Process http://greendelta.github.io/olca-schema/html/Process.html
@@ -74,8 +74,8 @@ type Process struct {
 	DefaultAllocationMethod AllocationType       `json:"defaultAllocationMethod,omitempty"`
 	AllocationFactors       []AllocationFactor   `json:"allocationFactors,omitempty"`
 	Exchanges               []Exchange           `json:"exchanges,omitempty"`
-	Location                *RootEntity          `json:"location,omitempty"`
-	Parameters              []RootEntity         `json:"parameters,omitempty"`
+	Location                *Ref                 `json:"location,omitempty"`
+	Parameters              []Ref                `json:"parameters,omitempty"`
 	ProcessDocumentation    ProcessDocumentation `json:"processDocumentation"`
 	Type                    ProcessType          `json:"processTyp,omitempty"`
 	SocialAspects           []SocialAspect       `json:"socialAspects,omitempty"`

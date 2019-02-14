@@ -21,10 +21,16 @@ type RootEntity struct {
 	LastChange  string `json:"lastChange,omitempty"`
 }
 
+// Ref http://greendelta.github.io/olca-schema/html/Ref.html
+type Ref struct {
+	RootEntity
+	CategoryPath []string `json:"categoryPath,omitempty"`
+}
+
 // CategorizedEntity http://greendelta.github.io/olca-schema/html/CategorizedEntity.html
 type CategorizedEntity struct {
 	RootEntity
-	Category *RootEntity `json:"category,omitempty"`
+	Category *Ref `json:"category,omitempty"`
 }
 
 // Category http://greendelta.github.io/olca-schema/html/Category.html
@@ -66,15 +72,41 @@ type Unit struct {
 // UnitGroup http://greendelta.github.io/olca-schema/html/UnitGroup.html
 type UnitGroup struct {
 	CategorizedEntity
-	DefaultFlowProperty *RootEntity `json:"defaultFlowProperty,omitempty"`
-	Units               []Unit      `json:"units,omitempty"`
+	DefaultFlowProperty *Ref   `json:"defaultFlowProperty,omitempty"`
+	Units               []Unit `json:"units,omitempty"`
 }
 
 // FlowProperty http://greendelta.github.io/olca-schema/html/FlowProperty.html
 type FlowProperty struct {
 	CategorizedEntity
 	Type      FlowPropertyType `json:"flowPropertyType,omitempty"`
-	UnitGroup *RootEntity      `json:"unitGroup,omitempty"`
+	UnitGroup *Ref             `json:"unitGroup,omitempty"`
+}
+
+// FlowPropertyFactor http://greendelta.github.io/olca-schema/html/FlowPropertyFactor.html
+type FlowPropertyFactor struct {
+	Entity
+	FlowProperty          *Ref    `json:"flowProperty,omitempty"`
+	ConversionFactor      float64 `json:"conversionFactor"`
+	ReferenceFlowProperty bool    `json:"referenceFlowProperty"`
+}
+
+// Flow http://greendelta.github.io/olca-schema/html/Flow.html
+type Flow struct {
+	CategorizedEntity
+	Type           FlowType             `json:"flowType,omitempty"`
+	Cas            string               `json:"cas,omitempty"`
+	Formula        string               `json:"formula,omitempty"`
+	FlowProperties []FlowPropertyFactor `json:"flowProperties,omitempty"`
+	Location       *Ref                 `json:"location,omitempty"`
+}
+
+// FlowRef http://greendelta.github.io/olca-schema/html/FlowRef.html
+type FlowRef struct {
+	Ref
+	RefUnit  string   `json:"refUnit,omitempty"`
+	Location string   `json:"location,omitempty"`
+	FlowType FlowType `json:"flowType,omitempty"`
 }
 
 // Location http://greendelta.github.io/olca-schema/html/Location.html
@@ -123,9 +155,9 @@ type Parameter struct {
 // SocialIndicator http://greendelta.github.io/olca-schema/html/SocialIndicator.html
 type SocialIndicator struct {
 	CategorizedEntity
-	ActivityVariable  string      `json:"activityVariable,omitempty"`
-	ActivityQuantity  *RootEntity `json:"activityQuantity,omitempty"`
-	ActivityUnit      *RootEntity `json:"activityUnit,omitempty"`
-	UnitOfMeasurement string      `json:"unitOfMeasurement,omitempty"`
-	EvaluationScheme  string      `json:"evaluationScheme,omitempty"`
+	ActivityVariable  string `json:"activityVariable,omitempty"`
+	ActivityQuantity  *Ref   `json:"activityQuantity,omitempty"`
+	ActivityUnit      *Ref   `json:"activityUnit,omitempty"`
+	UnitOfMeasurement string `json:"unitOfMeasurement,omitempty"`
+	EvaluationScheme  string `json:"evaluationScheme,omitempty"`
 }

@@ -10,9 +10,9 @@ type ImpactCategory struct {
 // ImpactFactor http://greendelta.github.io/olca-schema/html/ImpactFactor.html
 type ImpactFactor struct {
 	Entity
-	Flow         *RootEntity  `json:"flow,omitempty"`
-	FlowProperty *RootEntity  `json:"flowProperty,omitempty"`
-	Unit         *RootEntity  `json:"unit,omitempty"`
+	Flow         *FlowRef     `json:"flow,omitempty"`
+	FlowProperty *Ref         `json:"flowProperty,omitempty"`
+	Unit         *Ref         `json:"unit,omitempty"`
 	Value        float64      `json:"value"`
 	Formula      string       `json:"formula,omitempty"`
 	Uncertainty  *Uncertainty `json:"uncertainty,omitempty"`
@@ -21,6 +21,6 @@ type ImpactFactor struct {
 // ImpactMethod http://greendelta.github.io/olca-schema/html/ImpactMethod.html
 type ImpactMethod struct {
 	CategorizedEntity
-	ImpactCategories []RootEntity `json:"impactCategories,omitempty"`
-	Parameters       []RootEntity `json:"parameters,omitempty"`
+	ImpactCategories []Ref `json:"impactCategories,omitempty"`
+	Parameters       []Ref `json:"parameters,omitempty"`
 }
