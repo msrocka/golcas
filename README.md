@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/msrocka/ld.svg?branch=master)](https://travis-ci.org/msrocka/ld)
 
 `ld` is a small Go package for writing reading and writing data in the 
-[olca-schema format](https://github.com/GreenDelta/olca-schema) (a JSON-**LD**
+[olca-schema format](https://github.com/GreenDelta/olca-schema) (a JSON-[LD](https://json-ld.org/)
 based format for [LCA](https://en.wikipedia.org/wiki/Life-cycle_assessment) data).
 
 ## Getting started

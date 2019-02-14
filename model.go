@@ -21,12 +21,6 @@ type RootEntity struct {
 	LastChange  string `json:"lastChange,omitempty"`
 }
 
-// Ref http://greendelta.github.io/olca-schema/html/Ref.html
-type Ref struct {
-	RootEntity
-	CategoryPath []string `json:"categoryPath,omitempty"`
-}
-
 // CategorizedEntity http://greendelta.github.io/olca-schema/html/CategorizedEntity.html
 type CategorizedEntity struct {
 	RootEntity
@@ -99,14 +93,6 @@ type Flow struct {
 	Formula        string               `json:"formula,omitempty"`
 	FlowProperties []FlowPropertyFactor `json:"flowProperties,omitempty"`
 	Location       *Ref                 `json:"location,omitempty"`
-}
-
-// FlowRef http://greendelta.github.io/olca-schema/html/FlowRef.html
-type FlowRef struct {
-	Ref
-	RefUnit  string   `json:"refUnit,omitempty"`
-	Location string   `json:"location,omitempty"`
-	FlowType FlowType `json:"flowType,omitempty"`
 }
 
 // Location http://greendelta.github.io/olca-schema/html/Location.html
