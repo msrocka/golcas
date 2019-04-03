@@ -77,6 +77,6 @@ type Process struct {
 	Location                *Ref                 `json:"location,omitempty"`
 	Parameters              []Ref                `json:"parameters,omitempty"`
 	ProcessDocumentation    ProcessDocumentation `json:"processDocumentation"`
-	Type                    ProcessType          `json:"processTyp,omitempty"`
+	Type                    ProcessType          `json:"processType,omitempty"`
 	SocialAspects           []SocialAspect       `json:"socialAspects,omitempty"`
 }
