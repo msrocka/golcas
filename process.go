@@ -32,6 +32,7 @@ type ProcessDocumentation struct {
 // Exchange http://greendelta.github.io/olca-schema/html/Exchange.html
 type Exchange struct {
 	Entity
+	InternalID            int          `json:"internalId"`
 	AvoidedProduct        bool         `json:"avoidedProduct"`
 	Flow                  *FlowRef     `json:"flow,omitempty"`
 	FlowProperty          *Ref         `json:"flowProperty,omitempty"`
