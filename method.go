@@ -1,4 +1,4 @@
-package ld
+package golcas
 
 // ImpactCategory http://greendelta.github.io/olca-schema/html/ImpactCategory.html
 type ImpactCategory struct {

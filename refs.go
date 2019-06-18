@@ -1,4 +1,4 @@
-package ld
+package golcas
 
 // Ref http://greendelta.github.io/olca-schema/html/Ref.html
 type Ref struct {

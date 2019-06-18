@@ -1,4 +1,4 @@
-package ld
+package golcas
 
 // NewReference creates a RootEntity with the given id, type, and name.
 // This function can be used for creating references to root entities.

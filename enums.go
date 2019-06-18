@@ -1,4 +1,4 @@
-package ld
+package golcas
 
 // ModelType enumeration
 type ModelType string

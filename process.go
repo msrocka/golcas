@@ -1,4 +1,4 @@
-package ld
+package golcas
 
 // ProcessDocumentation http://greendelta.github.io/olca-schema/html/ProcessDocumentation.html
 type ProcessDocumentation struct {

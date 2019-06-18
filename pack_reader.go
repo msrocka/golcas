@@ -1,4 +1,4 @@
-package ld
+package golcas
 
 import (
 	"archive/zip"

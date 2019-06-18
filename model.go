@@ -1,6 +1,6 @@
-// Package ld provides a Go implementation of the olca-schema definition
+// Package golcas provides a Go implementation of the olca-schema definition
 // (http://greendelta.github.io/olca-schema).
-package ld
+package golcas
 
 // ContextURL is the URL to the olca-schema definition
 const ContextURL = "http://greendelta.github.io/olca-schema/context.jsonld"
