@@ -59,7 +59,7 @@ type Source struct {
 type Unit struct {
 	RootEntity
 	ConversionFactor float64  `json:"conversionFactor"`
-	ReferenceUnit    bool     `json:"referenceUnit"`
+	IsReferenceUnit  bool     `json:"referenceUnit"`
 	Synonyms         []string `json:"synonyms,omitempty"`
 }
 
@@ -80,9 +80,9 @@ type FlowProperty struct {
 // FlowPropertyFactor http://greendelta.github.io/olca-schema/html/FlowPropertyFactor.html
 type FlowPropertyFactor struct {
 	Entity
-	FlowProperty          *Ref    `json:"flowProperty,omitempty"`
-	ConversionFactor      float64 `json:"conversionFactor"`
-	ReferenceFlowProperty bool    `json:"referenceFlowProperty"`
+	FlowProperty            *Ref    `json:"flowProperty,omitempty"`
+	ConversionFactor        float64 `json:"conversionFactor"`
+	IsReferenceFlowProperty bool    `json:"referenceFlowProperty"`
 }
 
 // Flow http://greendelta.github.io/olca-schema/html/Flow.html
@@ -127,15 +127,15 @@ type Uncertainty struct {
 // Parameter http://greendelta.github.io/olca-schema/html/Parameter.html
 type Parameter struct {
 	Entity
-	Name           string         `json:"name,omitempty"`
-	Description    string         `json:"description,omitempty"`
-	Scope          ParameterScope `json:"parameterScope,omitempty"`
-	InputParameter bool           `json:"inputParameter"`
-	Value          float64        `json:"value"`
-	Formula        string         `json:"formula,omitempty"`
-	ExternalSource string         `json:"externalSource,omitempty"`
-	SourceType     string         `json:"sourceType,omitempty"`
-	Uncertainty    *Uncertainty   `json:"uncertainty,omitempty"`
+	Name             string         `json:"name,omitempty"`
+	Description      string         `json:"description,omitempty"`
+	Scope            ParameterScope `json:"parameterScope,omitempty"`
+	IsInputParameter bool           `json:"inputParameter"`
+	Value            float64        `json:"value"`
+	Formula          string         `json:"formula,omitempty"`
+	ExternalSource   string         `json:"externalSource,omitempty"`
+	SourceType       string         `json:"sourceType,omitempty"`
+	Uncertainty      *Uncertainty   `json:"uncertainty,omitempty"`
 }
 
 // SocialIndicator http://greendelta.github.io/olca-schema/html/SocialIndicator.html

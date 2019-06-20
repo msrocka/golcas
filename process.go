@@ -18,7 +18,7 @@ type ProcessDocumentation struct {
 	SamplingDescription          string `json:"samplingDescription,omitempty"`
 	Sources                      []Ref  `json:"sources,omitempty"`
 	RestrictionsDescription      string `json:"restrictionsDescription,omitempty"`
-	Copyright                    bool   `json:"copyright"`
+	HasCopyright                 bool   `json:"copyright"`
 	CreationDate                 string `json:"creationDate,omitempty"`
 	DataDocumentor               *Ref   `json:"dataDocumentor,omitempty"`
 	DataGenerator                *Ref   `json:"dataGenerator,omitempty"`
@@ -32,20 +32,20 @@ type ProcessDocumentation struct {
 // Exchange http://greendelta.github.io/olca-schema/html/Exchange.html
 type Exchange struct {
 	Entity
-	InternalID            int          `json:"internalId"`
-	AvoidedProduct        bool         `json:"avoidedProduct"`
-	Flow                  *FlowRef     `json:"flow,omitempty"`
-	FlowProperty          *Ref         `json:"flowProperty,omitempty"`
-	Input                 bool         `json:"input"`
-	QuantitativeReference bool         `json:"quantitativeReference"`
-	BaseUncertainty       float64      `json:"baseUncertainty"`
-	Provider              *Ref         `json:"provider,omitempty"` // TODO: ProcessRef
-	Amount                float64      `json:"amount"`
-	AmountFormula         string       `json:"amountFormula,omitempty"`
-	Unit                  *Ref         `json:"unit,omitempty"`
-	PedigreeUncertainty   string       `json:"pedigreeUncertainty,omitempty"`
-	Uncertainty           *Uncertainty `json:"uncertainty,omitempty"`
-	Comment               string       `json:"comment,omitempty"`
+	InternalID              int          `json:"internalId"`
+	IsAvoidedProduct        bool         `json:"avoidedProduct"`
+	Flow                    *FlowRef     `json:"flow,omitempty"`
+	FlowProperty            *Ref         `json:"flowProperty,omitempty"`
+	IsInput                 bool         `json:"input"`
+	IsQuantitativeReference bool         `json:"quantitativeReference"`
+	BaseUncertainty         float64      `json:"baseUncertainty"`
+	Provider                *Ref         `json:"provider,omitempty"` // TODO: ProcessRef
+	Amount                  float64      `json:"amount"`
+	AmountFormula           string       `json:"amountFormula,omitempty"`
+	Unit                    *Ref         `json:"unit,omitempty"`
+	PedigreeUncertainty     string       `json:"pedigreeUncertainty,omitempty"`
+	Uncertainty             *Uncertainty `json:"uncertainty,omitempty"`
+	Comment                 string       `json:"comment,omitempty"`
 }
 
 // AllocationFactor http://greendelta.github.io/olca-schema/html/AllocationFactor.html
@@ -80,4 +80,18 @@ type Process struct {
 	ProcessDocumentation    ProcessDocumentation `json:"processDocumentation"`
 	Type                    ProcessType          `json:"processType,omitempty"`
 	SocialAspects           []SocialAspect       `json:"socialAspects,omitempty"`
+}
+
+// QuantitativeReference reteruns the Exchange that is the
+// quantitative reference of the process.
+func (p *Process) QuantitativeReference() *Exchange {
+	if p == nil {
+		return nil
+	}
+	for i := range p.Exchanges {
+		if p.Exchanges[i].IsQuantitativeReference {
+			return &p.Exchanges[i]
+		}
+	}
+	return nil
 }
