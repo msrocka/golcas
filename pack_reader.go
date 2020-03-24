@@ -277,3 +277,21 @@ func (r *PackReader) EachSocialIndicator(fn func(*SocialIndicator) bool) error {
 	})
 	return gerr
 }
+
+// EachProductSystem iterates over each `ProductSystem` data set in the package unless
+// the given handler returns false.
+func (r *PackReader) EachProductSystem(fn func(*ProductSystem) bool) error {
+	var gerr error
+	r.EachFile(func(f *ZipFile) bool {
+		if !IsProductSystemPath(f.Path()) {
+			return true
+		}
+		val, err := f.ReadProductSystem()
+		if err != nil {
+			gerr = err
+			return false
+		}
+		return fn(val)
+	})
+	return gerr
+}

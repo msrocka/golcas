@@ -84,6 +84,11 @@ func (w *PackWriter) PutImpactCategory(ic *ImpactCategory) error {
 	return w.put("lcia_categories/"+ic.ID+".json", ic)
 }
 
+// PutProductSystem writes the given product system to the package
+func (w *PackWriter) PutProductSystem(ps *ProductSystem) error {
+	return w.put("product_systems/"+ps.ID+".json", ps)
+}
+
 func (w *PackWriter) put(path string, val interface{}) error {
 	bytes, err := json.Marshal(val)
 	if err != nil {

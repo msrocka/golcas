@@ -111,3 +111,12 @@ func ReadImpactMethod(data []byte) (*ImpactMethod, error) {
 	}
 	return v, nil
 }
+
+// ReadProductSystem converts the given bytes into a ProductSystem
+func ReadProductSystem(data []byte) (*ProductSystem, error) {
+	v := &ProductSystem{}
+	if err := json.Unmarshal(data, v); err != nil {
+		return nil, err
+	}
+	return v, nil
+}

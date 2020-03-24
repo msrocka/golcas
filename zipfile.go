@@ -144,3 +144,12 @@ func (f *ZipFile) ReadImpactMethod() (*ImpactMethod, error) {
 	}
 	return ReadImpactMethod(data)
 }
+
+// ReadProductSystem reads a ProductSystem from the zip file
+func (f *ZipFile) ReadProductSystem() (*ProductSystem, error) {
+	data, err := f.Read()
+	if err != nil {
+		return nil, err
+	}
+	return ReadProductSystem(data)
+}
