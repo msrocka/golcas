@@ -16,7 +16,7 @@ func TestPackIO(t *testing.T) {
 
 	t.Log("create zip file with actor abc", path)
 	writer, _ := NewPackWriter(path)
-	err := writer.PutActor(&Actor{ID: "abc", Name: "My actor"})
+	err := writer.WriteActor(&Actor{ID: "abc", Name: "My actor"})
 	if err != nil {
 		t.Fatal(err)
 		return
@@ -27,7 +27,7 @@ func TestPackIO(t *testing.T) {
 	}
 
 	t.Log("read actor from zip")
-	reader, _ := NewPackReader(file.Name())
+	reader, _ := NewZipReader(file.Name())
 	actor, _ := reader.ReadActor("abc")
 	if actor.Name != "My actor" {
 		t.Fatal("Failed to get data set from package")
