@@ -2,47 +2,36 @@ package golcas
 
 import (
 	"archive/zip"
-	"encoding/json"
-	"io/ioutil"
+	"io"
 )
 
-// PackReader reads data sets from a zip file in the olca-schema
-// package format.
 type PackReader struct {
 	reader *zip.ReadCloser
 }
 
-// NewPackReader creates a new PackReader
 func NewPackReader(filePath string) (*PackReader, error) {
 	reader, err := zip.OpenReader(filePath)
-	return &PackReader{reader: reader}, err
+	if err != nil {
+		return nil, err
+	}
+	return &PackReader{reader: reader}, nil
 }
 
-// Close closes the PackReader
 func (r *PackReader) Close() error {
 	return r.reader.Close()
 }
 
-// GetActor reads the Actor with the given ID from the package
-func (r *PackReader) GetActor(id string) (*Actor, error) {
-	fname := "actors/" + id + ".json"
-	for _, f := range r.reader.File {
-		if f.Name != fname {
-			continue
-		}
-		reader, err := f.Open()
-		if err != nil {
-			return nil, err
-		}
-		bytes, err := ioutil.ReadAll(reader)
-		if err != nil {
-			return nil, err
-		}
-		a := &Actor{}
-		err = json.Unmarshal(bytes, a)
-		return a, err
+func (r *PackReader) ReadActor(id string) (*Actor, error) {
+	f, err := r.reader.Open("actors/" + id + ".json")
+	if err != nil {
+		return nil, err
 	}
-	return nil, nil
+	defer f.Close()
+	bytes, err := io.ReadAll(f)
+	if err != nil {
+		return nil, err
+	}
+	return ReadActor(bytes)
 }
 
 // EachFile calls the given function for each file in the zip package. It stops

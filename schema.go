@@ -116,7 +116,7 @@ type Actor struct {
 	Country     string   `json:"country,omitempty"`
 	Description string   `json:"description,omitempty"`
 	Email       string   `json:"email,omitempty"`
-	LastChange  string   `json:"lastChange"`
+	LastChange  string   `json:"lastChange,omitempty"`
 	Name        string   `json:"name,omitempty"`
 	Tags        []string `json:"tags,omitempty"`
 	Telefax     string   `json:"telefax,omitempty"`
@@ -130,7 +130,7 @@ type AllocationFactor struct {
 	AllocationType AllocationType `json:"allocationType,omitempty"`
 	Exchange       *ExchangeRef   `json:"exchange,omitempty"`
 	Formula        string         `json:"formula,omitempty"`
-	Product        *Ref           `json:"product"`
+	Product        *Ref           `json:"product,omitempty"`
 	Value          float64        `json:"value"`
 }
 
@@ -140,9 +140,9 @@ type Currency struct {
 	Code             string   `json:"code,omitempty"`
 	ConversionFactor float64  `json:"conversionFactor"`
 	Description      string   `json:"description,omitempty"`
-	LastChange       string   `json:"lastChange"`
+	LastChange       string   `json:"lastChange,omitempty"`
 	Name             string   `json:"name,omitempty"`
-	RefCurrency      *Ref     `json:"refCurrency"`
+	RefCurrency      *Ref     `json:"refCurrency,omitempty"`
 	Tags             []string `json:"tags,omitempty"`
 	Version          string   `json:"version,omitempty"`
 }
@@ -166,9 +166,9 @@ type DQSystem struct {
 	Description      string        `json:"description,omitempty"`
 	HasUncertainties bool          `json:"hasUncertainties"`
 	Indicators       []DQIndicator `json:"indicators,omitempty"`
-	LastChange       string        `json:"lastChange"`
+	LastChange       string        `json:"lastChange,omitempty"`
 	Name             string        `json:"name,omitempty"`
-	Source           *Ref          `json:"source"`
+	Source           *Ref          `json:"source,omitempty"`
 	Tags             []string      `json:"tags,omitempty"`
 	Version          string        `json:"version,omitempty"`
 }
@@ -177,30 +177,30 @@ type Epd struct {
 	ID              string      `json:"@id,omitempty"`
 	Category        string      `json:"category,omitempty"`
 	Description     string      `json:"description,omitempty"`
-	LastChange      string      `json:"lastChange"`
-	Manufacturer    *Ref        `json:"manufacturer"`
+	LastChange      string      `json:"lastChange,omitempty"`
+	Manufacturer    *Ref        `json:"manufacturer,omitempty"`
 	Modules         []EpdModule `json:"modules,omitempty"`
 	Name            string      `json:"name,omitempty"`
-	Pcr             *Ref        `json:"pcr"`
+	Pcr             *Ref        `json:"pcr,omitempty"`
 	Product         *EpdProduct `json:"product,omitempty"`
-	ProgramOperator *Ref        `json:"programOperator"`
+	ProgramOperator *Ref        `json:"programOperator,omitempty"`
 	Tags            []string    `json:"tags,omitempty"`
 	Urn             string      `json:"urn,omitempty"`
-	Verifier        *Ref        `json:"verifier"`
+	Verifier        *Ref        `json:"verifier,omitempty"`
 	Version         string      `json:"version,omitempty"`
 }
 
 type EpdModule struct {
 	Multiplier float64 `json:"multiplier"`
 	Name       string  `json:"name,omitempty"`
-	Result     *Ref    `json:"result"`
+	Result     *Ref    `json:"result,omitempty"`
 }
 
 type EpdProduct struct {
 	Amount       float64 `json:"amount"`
-	Flow         *Ref    `json:"flow"`
-	FlowProperty *Ref    `json:"flowProperty"`
-	Unit         *Ref    `json:"unit"`
+	Flow         *Ref    `json:"flow,omitempty"`
+	FlowProperty *Ref    `json:"flowProperty,omitempty"`
+	Unit         *Ref    `json:"unit,omitempty"`
 }
 
 type Exchange struct {
@@ -209,19 +209,19 @@ type Exchange struct {
 	BaseUncertainty         *float64     `json:"baseUncertainty,omitempty"`
 	CostFormula             string       `json:"costFormula,omitempty"`
 	CostValue               *float64     `json:"costValue,omitempty"`
-	Currency                *Ref         `json:"currency"`
-	DefaultProvider         *Ref         `json:"defaultProvider"`
+	Currency                *Ref         `json:"currency,omitempty"`
+	DefaultProvider         *Ref         `json:"defaultProvider,omitempty"`
 	Description             string       `json:"description,omitempty"`
 	DqEntry                 string       `json:"dqEntry,omitempty"`
-	Flow                    *Ref         `json:"flow"`
-	FlowProperty            *Ref         `json:"flowProperty"`
+	Flow                    *Ref         `json:"flow,omitempty"`
+	FlowProperty            *Ref         `json:"flowProperty,omitempty"`
 	InternalId              int          `json:"internalId"`
 	IsAvoidedProduct        bool         `json:"isAvoidedProduct"`
 	IsInput                 bool         `json:"isInput"`
 	IsQuantitativeReference bool         `json:"isQuantitativeReference"`
-	Location                *Ref         `json:"location"`
+	Location                *Ref         `json:"location,omitempty"`
 	Uncertainty             *Uncertainty `json:"uncertainty,omitempty"`
-	Unit                    *Ref         `json:"unit"`
+	Unit                    *Ref         `json:"unit,omitempty"`
 }
 
 type ExchangeRef struct {
@@ -237,8 +237,8 @@ type Flow struct {
 	FlowType             FlowType             `json:"flowType,omitempty"`
 	Formula              string               `json:"formula,omitempty"`
 	IsInfrastructureFlow bool                 `json:"isInfrastructureFlow"`
-	LastChange           string               `json:"lastChange"`
-	Location             *Ref                 `json:"location"`
+	LastChange           string               `json:"lastChange,omitempty"`
+	Location             *Ref                 `json:"location,omitempty"`
 	Name                 string               `json:"name,omitempty"`
 	Synonyms             string               `json:"synonyms,omitempty"`
 	Tags                 []string             `json:"tags,omitempty"`
@@ -249,7 +249,7 @@ type FlowMap struct {
 	ID          string         `json:"@id,omitempty"`
 	Category    string         `json:"category,omitempty"`
 	Description string         `json:"description,omitempty"`
-	LastChange  string         `json:"lastChange"`
+	LastChange  string         `json:"lastChange,omitempty"`
 	Mappings    []FlowMapEntry `json:"mappings,omitempty"`
 	Name        string         `json:"name,omitempty"`
 	Source      *Ref           `json:"source,omitempty"`
@@ -265,10 +265,10 @@ type FlowMapEntry struct {
 }
 
 type FlowMapRef struct {
-	Flow         *Ref `json:"flow"`
-	FlowProperty *Ref `json:"flowProperty"`
-	Provider     *Ref `json:"provider"`
-	Unit         *Ref `json:"unit"`
+	Flow         *Ref `json:"flow,omitempty"`
+	FlowProperty *Ref `json:"flowProperty,omitempty"`
+	Provider     *Ref `json:"provider,omitempty"`
+	Unit         *Ref `json:"unit,omitempty"`
 }
 
 type FlowProperty struct {
@@ -276,28 +276,28 @@ type FlowProperty struct {
 	Category         string           `json:"category,omitempty"`
 	Description      string           `json:"description,omitempty"`
 	FlowPropertyType FlowPropertyType `json:"flowPropertyType,omitempty"`
-	LastChange       string           `json:"lastChange"`
+	LastChange       string           `json:"lastChange,omitempty"`
 	Name             string           `json:"name,omitempty"`
 	Tags             []string         `json:"tags,omitempty"`
-	UnitGroup        *Ref             `json:"unitGroup"`
+	UnitGroup        *Ref             `json:"unitGroup,omitempty"`
 	Version          string           `json:"version,omitempty"`
 }
 
 type FlowPropertyFactor struct {
 	ConversionFactor  float64 `json:"conversionFactor"`
-	FlowProperty      *Ref    `json:"flowProperty"`
+	FlowProperty      *Ref    `json:"flowProperty,omitempty"`
 	IsRefFlowProperty bool    `json:"isRefFlowProperty"`
 }
 
 type FlowResult struct {
 	Amount       float64 `json:"amount"`
 	Description  string  `json:"description,omitempty"`
-	Flow         *Ref    `json:"flow"`
-	FlowProperty *Ref    `json:"flowProperty"`
+	Flow         *Ref    `json:"flow,omitempty"`
+	FlowProperty *Ref    `json:"flowProperty,omitempty"`
 	IsInput      bool    `json:"isInput"`
 	IsRefFlow    bool    `json:"isRefFlow"`
-	Location     *Ref    `json:"location"`
-	Unit         *Ref    `json:"unit"`
+	Location     *Ref    `json:"location,omitempty"`
+	Unit         *Ref    `json:"unit,omitempty"`
 }
 
 type ImpactCategory struct {
@@ -307,22 +307,22 @@ type ImpactCategory struct {
 	Description   string         `json:"description,omitempty"`
 	Direction     Direction      `json:"direction,omitempty"`
 	ImpactFactors []ImpactFactor `json:"impactFactors,omitempty"`
-	LastChange    string         `json:"lastChange"`
+	LastChange    string         `json:"lastChange,omitempty"`
 	Name          string         `json:"name,omitempty"`
 	Parameters    []Parameter    `json:"parameters,omitempty"`
 	RefUnit       string         `json:"refUnit,omitempty"`
-	Source        *Ref           `json:"source"`
+	Source        *Ref           `json:"source,omitempty"`
 	Tags          []string       `json:"tags,omitempty"`
 	Version       string         `json:"version,omitempty"`
 }
 
 type ImpactFactor struct {
-	Flow         *Ref         `json:"flow"`
-	FlowProperty *Ref         `json:"flowProperty"`
+	Flow         *Ref         `json:"flow,omitempty"`
+	FlowProperty *Ref         `json:"flowProperty,omitempty"`
 	Formula      string       `json:"formula,omitempty"`
-	Location     *Ref         `json:"location"`
+	Location     *Ref         `json:"location,omitempty"`
 	Uncertainty  *Uncertainty `json:"uncertainty,omitempty"`
-	Unit         *Ref         `json:"unit"`
+	Unit         *Ref         `json:"unit,omitempty"`
 	Value        float64      `json:"value"`
 }
 
@@ -332,10 +332,10 @@ type ImpactMethod struct {
 	Code             string   `json:"code,omitempty"`
 	Description      string   `json:"description,omitempty"`
 	ImpactCategories []Ref    `json:"impactCategories,omitempty"`
-	LastChange       string   `json:"lastChange"`
+	LastChange       string   `json:"lastChange,omitempty"`
 	Name             string   `json:"name,omitempty"`
 	NwSets           []NwSet  `json:"nwSets,omitempty"`
-	Source           *Ref     `json:"source"`
+	Source           *Ref     `json:"source,omitempty"`
 	Tags             []string `json:"tags,omitempty"`
 	Version          string   `json:"version,omitempty"`
 }
@@ -343,7 +343,7 @@ type ImpactMethod struct {
 type ImpactResult struct {
 	Amount      float64 `json:"amount"`
 	Description string  `json:"description,omitempty"`
-	Indicator   *Ref    `json:"indicator"`
+	Indicator   *Ref    `json:"indicator,omitempty"`
 }
 
 type LinkingConfig struct {
@@ -358,7 +358,7 @@ type Location struct {
 	Code        string         `json:"code,omitempty"`
 	Description string         `json:"description,omitempty"`
 	Geometry    map[string]any `json:"geometry"`
-	LastChange  string         `json:"lastChange"`
+	LastChange  string         `json:"lastChange,omitempty"`
 	Latitude    *float64       `json:"latitude,omitempty"`
 	Longitude   *float64       `json:"longitude,omitempty"`
 	Name        string         `json:"name,omitempty"`
@@ -367,7 +367,7 @@ type Location struct {
 }
 
 type NwFactor struct {
-	ImpactCategory      *Ref     `json:"impactCategory"`
+	ImpactCategory      *Ref     `json:"impactCategory,omitempty"`
 	NormalisationFactor *float64 `json:"normalisationFactor,omitempty"`
 	WeightingFactor     *float64 `json:"weightingFactor,omitempty"`
 }
@@ -386,7 +386,7 @@ type Parameter struct {
 	Description      string         `json:"description,omitempty"`
 	Formula          string         `json:"formula,omitempty"`
 	IsInputParameter bool           `json:"isInputParameter"`
-	LastChange       string         `json:"lastChange"`
+	LastChange       string         `json:"lastChange,omitempty"`
 	Name             string         `json:"name,omitempty"`
 	ParameterScope   ParameterScope `json:"parameterScope,omitempty"`
 	Tags             []string       `json:"tags,omitempty"`
@@ -418,31 +418,31 @@ type Process struct {
 	DefaultAllocationMethod AllocationType        `json:"defaultAllocationMethod,omitempty"`
 	Description             string                `json:"description,omitempty"`
 	DqEntry                 string                `json:"dqEntry,omitempty"`
-	DqSystem                *Ref                  `json:"dqSystem"`
-	ExchangeDqSystem        *Ref                  `json:"exchangeDqSystem"`
+	DqSystem                *Ref                  `json:"dqSystem,omitempty"`
+	ExchangeDqSystem        *Ref                  `json:"exchangeDqSystem,omitempty"`
 	Exchanges               []Exchange            `json:"exchanges,omitempty"`
 	IsInfrastructureProcess bool                  `json:"isInfrastructureProcess"`
-	LastChange              string                `json:"lastChange"`
+	LastChange              string                `json:"lastChange,omitempty"`
 	LastInternalId          int                   `json:"lastInternalId"`
-	Location                *Ref                  `json:"location"`
+	Location                *Ref                  `json:"location,omitempty"`
 	Name                    string                `json:"name,omitempty"`
 	Parameters              []Parameter           `json:"parameters,omitempty"`
 	ProcessDocumentation    *ProcessDocumentation `json:"processDocumentation,omitempty"`
 	ProcessType             ProcessType           `json:"processType,omitempty"`
 	SocialAspects           []SocialAspect        `json:"socialAspects,omitempty"`
-	SocialDqSystem          *Ref                  `json:"socialDqSystem"`
+	SocialDqSystem          *Ref                  `json:"socialDqSystem,omitempty"`
 	Tags                    []string              `json:"tags,omitempty"`
 	Version                 string                `json:"version,omitempty"`
 }
 
 type ProcessDocumentation struct {
 	CompletenessDescription      string `json:"completenessDescription,omitempty"`
-	CreationDate                 string `json:"creationDate"`
+	CreationDate                 string `json:"creationDate,omitempty"`
 	DataCollectionDescription    string `json:"dataCollectionDescription,omitempty"`
-	DataDocumentor               *Ref   `json:"dataDocumentor"`
-	DataGenerator                *Ref   `json:"dataGenerator"`
+	DataDocumentor               *Ref   `json:"dataDocumentor,omitempty"`
+	DataGenerator                *Ref   `json:"dataGenerator,omitempty"`
 	DataSelectionDescription     string `json:"dataSelectionDescription,omitempty"`
-	DataSetOwner                 *Ref   `json:"dataSetOwner"`
+	DataSetOwner                 *Ref   `json:"dataSetOwner,omitempty"`
 	DataTreatmentDescription     string `json:"dataTreatmentDescription,omitempty"`
 	GeographyDescription         string `json:"geographyDescription,omitempty"`
 	IntendedApplication          string `json:"intendedApplication,omitempty"`
@@ -450,23 +450,23 @@ type ProcessDocumentation struct {
 	IsCopyrightProtected         bool   `json:"isCopyrightProtected"`
 	ModelingConstantsDescription string `json:"modelingConstantsDescription,omitempty"`
 	ProjectDescription           string `json:"projectDescription,omitempty"`
-	Publication                  *Ref   `json:"publication"`
+	Publication                  *Ref   `json:"publication,omitempty"`
 	RestrictionsDescription      string `json:"restrictionsDescription,omitempty"`
 	ReviewDetails                string `json:"reviewDetails,omitempty"`
-	Reviewer                     *Ref   `json:"reviewer"`
+	Reviewer                     *Ref   `json:"reviewer,omitempty"`
 	SamplingDescription          string `json:"samplingDescription,omitempty"`
 	Sources                      []Ref  `json:"sources,omitempty"`
 	TechnologyDescription        string `json:"technologyDescription,omitempty"`
 	TimeDescription              string `json:"timeDescription,omitempty"`
 	UseAdvice                    string `json:"useAdvice,omitempty"`
-	ValidFrom                    string `json:"validFrom"`
-	ValidUntil                   string `json:"validUntil"`
+	ValidFrom                    string `json:"validFrom,omitempty"`
+	ValidUntil                   string `json:"validUntil,omitempty"`
 }
 
 type ProcessLink struct {
 	Exchange *ExchangeRef `json:"exchange,omitempty"`
-	Flow     *Ref         `json:"flow"`
-	Process  *Ref         `json:"process"`
+	Flow     *Ref         `json:"flow,omitempty"`
+	Process  *Ref         `json:"process,omitempty"`
 	Provider *Ref         `json:"provider,omitempty"`
 }
 
@@ -474,17 +474,17 @@ type ProductSystem struct {
 	ID                 string              `json:"@id,omitempty"`
 	Category           string              `json:"category,omitempty"`
 	Description        string              `json:"description,omitempty"`
-	LastChange         string              `json:"lastChange"`
+	LastChange         string              `json:"lastChange,omitempty"`
 	Name               string              `json:"name,omitempty"`
 	ParameterSets      []ParameterRedefSet `json:"parameterSets,omitempty"`
 	ProcessLinks       []ProcessLink       `json:"processLinks,omitempty"`
 	Processes          []Ref               `json:"processes,omitempty"`
 	RefExchange        *ExchangeRef        `json:"refExchange,omitempty"`
-	RefProcess         *Ref                `json:"refProcess"`
+	RefProcess         *Ref                `json:"refProcess,omitempty"`
 	Tags               []string            `json:"tags,omitempty"`
 	TargetAmount       float64             `json:"targetAmount"`
-	TargetFlowProperty *Ref                `json:"targetFlowProperty"`
-	TargetUnit         *Ref                `json:"targetUnit"`
+	TargetFlowProperty *Ref                `json:"targetFlowProperty,omitempty"`
+	TargetUnit         *Ref                `json:"targetUnit,omitempty"`
 	Version            string              `json:"version,omitempty"`
 }
 
@@ -492,10 +492,10 @@ type Project struct {
 	ID                    string           `json:"@id,omitempty"`
 	Category              string           `json:"category,omitempty"`
 	Description           string           `json:"description,omitempty"`
-	ImpactMethod          *Ref             `json:"impactMethod"`
+	ImpactMethod          *Ref             `json:"impactMethod,omitempty"`
 	IsWithCosts           bool             `json:"isWithCosts"`
 	IsWithRegionalization bool             `json:"isWithRegionalization"`
-	LastChange            string           `json:"lastChange"`
+	LastChange            string           `json:"lastChange,omitempty"`
 	Name                  string           `json:"name,omitempty"`
 	NwSet                 *NwSet           `json:"nwSet,omitempty"`
 	Tags                  []string         `json:"tags,omitempty"`
@@ -510,8 +510,8 @@ type ProjectVariant struct {
 	IsDisabled       bool             `json:"isDisabled"`
 	Name             string           `json:"name,omitempty"`
 	ParameterRedefs  []ParameterRedef `json:"parameterRedefs,omitempty"`
-	ProductSystem    *Ref             `json:"productSystem"`
-	Unit             *Ref             `json:"unit"`
+	ProductSystem    *Ref             `json:"productSystem,omitempty"`
+	Unit             *Ref             `json:"unit,omitempty"`
 }
 
 type Ref struct {
@@ -531,11 +531,11 @@ type Result struct {
 	Category      string         `json:"category,omitempty"`
 	Description   string         `json:"description,omitempty"`
 	FlowResults   []FlowResult   `json:"flowResults,omitempty"`
-	ImpactMethod  *Ref           `json:"impactMethod"`
+	ImpactMethod  *Ref           `json:"impactMethod,omitempty"`
 	ImpactResults []ImpactResult `json:"impactResults,omitempty"`
-	LastChange    string         `json:"lastChange"`
+	LastChange    string         `json:"lastChange,omitempty"`
 	Name          string         `json:"name,omitempty"`
-	ProductSystem *Ref           `json:"productSystem"`
+	ProductSystem *Ref           `json:"productSystem,omitempty"`
 	Tags          []string       `json:"tags,omitempty"`
 	Version       string         `json:"version,omitempty"`
 }
@@ -546,19 +546,19 @@ type SocialAspect struct {
 	Quality         string    `json:"quality,omitempty"`
 	RawAmount       string    `json:"rawAmount,omitempty"`
 	RiskLevel       RiskLevel `json:"riskLevel,omitempty"`
-	SocialIndicator *Ref      `json:"socialIndicator"`
-	Source          *Ref      `json:"source"`
+	SocialIndicator *Ref      `json:"socialIndicator,omitempty"`
+	Source          *Ref      `json:"source,omitempty"`
 }
 
 type SocialIndicator struct {
 	ID                string   `json:"@id,omitempty"`
-	ActivityQuantity  *Ref     `json:"activityQuantity"`
-	ActivityUnit      *Ref     `json:"activityUnit"`
+	ActivityQuantity  *Ref     `json:"activityQuantity,omitempty"`
+	ActivityUnit      *Ref     `json:"activityUnit,omitempty"`
 	ActivityVariable  string   `json:"activityVariable,omitempty"`
 	Category          string   `json:"category,omitempty"`
 	Description       string   `json:"description,omitempty"`
 	EvaluationScheme  string   `json:"evaluationScheme,omitempty"`
-	LastChange        string   `json:"lastChange"`
+	LastChange        string   `json:"lastChange,omitempty"`
 	Name              string   `json:"name,omitempty"`
 	Tags              []string `json:"tags,omitempty"`
 	UnitOfMeasurement string   `json:"unitOfMeasurement,omitempty"`
@@ -570,7 +570,7 @@ type Source struct {
 	Category      string   `json:"category,omitempty"`
 	Description   string   `json:"description,omitempty"`
 	ExternalFile  string   `json:"externalFile,omitempty"`
-	LastChange    string   `json:"lastChange"`
+	LastChange    string   `json:"lastChange,omitempty"`
 	Name          string   `json:"name,omitempty"`
 	Tags          []string `json:"tags,omitempty"`
 	TextReference string   `json:"textReference,omitempty"`
@@ -602,9 +602,9 @@ type Unit struct {
 type UnitGroup struct {
 	ID                  string   `json:"@id,omitempty"`
 	Category            string   `json:"category,omitempty"`
-	DefaultFlowProperty *Ref     `json:"defaultFlowProperty"`
+	DefaultFlowProperty *Ref     `json:"defaultFlowProperty,omitempty"`
 	Description         string   `json:"description,omitempty"`
-	LastChange          string   `json:"lastChange"`
+	LastChange          string   `json:"lastChange,omitempty"`
 	Name                string   `json:"name,omitempty"`
 	Tags                []string `json:"tags,omitempty"`
 	Units               []Unit   `json:"units,omitempty"`
@@ -614,25 +614,25 @@ type UnitGroup struct {
 type CalculationSetup struct {
 	Allocation          AllocationType   `json:"allocation,omitempty"`
 	Amount              float64          `json:"amount"`
-	FlowProperty        *Ref             `json:"flowProperty"`
-	ImpactMethod        *Ref             `json:"impactMethod"`
-	NwSet               *Ref             `json:"nwSet"`
+	FlowProperty        *Ref             `json:"flowProperty,omitempty"`
+	ImpactMethod        *Ref             `json:"impactMethod,omitempty"`
+	NwSet               *Ref             `json:"nwSet,omitempty"`
 	Parameters          []ParameterRedef `json:"parameters,omitempty"`
 	Target              *Ref             `json:"target,omitempty"`
-	Unit                *Ref             `json:"unit"`
+	Unit                *Ref             `json:"unit,omitempty"`
 	WithCosts           bool             `json:"withCosts"`
 	WithRegionalization bool             `json:"withRegionalization"`
 }
 
 type CostValue struct {
 	Amount   float64 `json:"amount"`
-	Currency *Ref    `json:"currency"`
+	Currency *Ref    `json:"currency,omitempty"`
 }
 
 type EnviFlow struct {
-	Flow     *Ref `json:"flow"`
+	Flow     *Ref `json:"flow,omitempty"`
 	IsInput  bool `json:"isInput"`
-	Location *Ref `json:"location"`
+	Location *Ref `json:"location,omitempty"`
 }
 
 type EnviFlowValue struct {
@@ -642,7 +642,7 @@ type EnviFlowValue struct {
 
 type ImpactValue struct {
 	Amount         float64 `json:"amount"`
-	ImpactCategory *Ref    `json:"impactCategory"`
+	ImpactCategory *Ref    `json:"impactCategory,omitempty"`
 }
 
 type ResultState struct {
@@ -681,7 +681,7 @@ type SankeyRequest struct {
 }
 
 type TechFlow struct {
-	Flow     *Ref `json:"flow"`
+	Flow     *Ref `json:"flow,omitempty"`
 	Provider *Ref `json:"provider,omitempty"`
 }
 

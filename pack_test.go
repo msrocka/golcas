@@ -20,7 +20,7 @@ func TestPackIO(t *testing.T) {
 	writer.Close()
 	t.Log("created zip file", path)
 	reader, _ := NewPackReader(file.Name())
-	actor, _ := reader.GetActor("abc")
+	actor, _ := reader.ReadActor("abc")
 	if actor.Name != "My actor" {
 		t.Error("Failed to get data set from package")
 	}
