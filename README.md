@@ -1,7 +1,5 @@
 # golcas
 
-[![Build Status](https://travis-ci.org/msrocka/golcas.svg?branch=master)](https://travis-ci.org/msrocka/golcas)
-
 `golcas` is a Go package for writing reading and writing data in the 
 [olca-schema format](https://github.com/GreenDelta/olca-schema)
 (a JSON-[LD](https://json-ld.org/) based format for

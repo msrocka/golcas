@@ -34,11 +34,6 @@ func (w *PackWriter) Close() error {
 	return w.file.Close()
 }
 
-// PutCategory writes the given category to the package
-func (w *PackWriter) PutCategory(c *Category) error {
-	return w.put("categories/"+c.ID+".json", c)
-}
-
 // PutActor writes the given actor to the package
 func (w *PackWriter) PutActor(a *Actor) error {
 	return w.put("actors/"+a.ID+".json", a)

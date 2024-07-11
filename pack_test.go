@@ -12,7 +12,7 @@ func TestPackIO(t *testing.T) {
 	path := file.Name()
 	os.Remove(path)
 	writer, _ := NewPackWriter(path)
-	err := writer.PutActor(NewActor("abc", "My actor"))
+	err := writer.PutActor(&Actor{ID: "abc", Name: "My actor"})
 	if err != nil {
 		t.Error(err)
 		return

@@ -4,15 +4,6 @@ import (
 	"encoding/json"
 )
 
-// ReadCategory converts the given bytes into a Category
-func ReadCategory(data []byte) (*Category, error) {
-	v := &Category{}
-	if err := json.Unmarshal(data, v); err != nil {
-		return nil, err
-	}
-	return v, nil
-}
-
 // ReadActor converts the given bytes into a Actor
 func ReadActor(data []byte) (*Actor, error) {
 	v := &Actor{}

@@ -37,15 +37,6 @@ func (f *ZipFile) Read() ([]byte, error) {
 	return data, nil
 }
 
-// ReadCategory reads a Category from the zip file
-func (f *ZipFile) ReadCategory() (*Category, error) {
-	data, err := f.Read()
-	if err != nil {
-		return nil, err
-	}
-	return ReadCategory(data)
-}
-
 // ReadActor reads a Actor from the zip file
 func (f *ZipFile) ReadActor() (*Actor, error) {
 	data, err := f.Read()

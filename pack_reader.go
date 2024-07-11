@@ -62,24 +62,6 @@ func (r *PackReader) EachFile(fn func(f *ZipFile) bool) {
 	}
 }
 
-// EachCategory iterates over each `Category` data set in the package unless
-// the given handler returns false.
-func (r *PackReader) EachCategory(fn func(*Category) bool) error {
-	var gerr error
-	r.EachFile(func(f *ZipFile) bool {
-		if !IsCategoryPath(f.Path()) {
-			return true
-		}
-		val, err := f.ReadCategory()
-		if err != nil {
-			gerr = err
-			return false
-		}
-		return fn(val)
-	})
-	return gerr
-}
-
 // EachSource iterates over each `Source` data set in the package unless
 // the given handler returns false.
 func (r *PackReader) EachSource(fn func(*Source) bool) error {
