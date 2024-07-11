@@ -6,14 +6,11 @@ import (
 	"os"
 )
 
-// PackWriter writes data sets to a zip file in the olca-schema
-// package format.
 type PackWriter struct {
 	file   *os.File
 	writer *zip.Writer
 }
 
-// NewPackWriter creates a new PackWriter
 func NewPackWriter(filePath string) (*PackWriter, error) {
 	file, err := os.Create(filePath)
 	if err != nil {
@@ -25,7 +22,6 @@ func NewPackWriter(filePath string) (*PackWriter, error) {
 	return writer, nil
 }
 
-// Close closes the PackWriter
 func (w *PackWriter) Close() error {
 	err := w.writer.Close()
 	if err != nil {
