@@ -15,7 +15,7 @@ func TestPackIO(t *testing.T) {
 	}
 
 	t.Log("create zip file with actor abc", path)
-	writer, _ := NewPackWriter(path)
+	writer, _ := NewZipWriter(path)
 	err := writer.WriteActor(&Actor{ID: "abc", Name: "My actor"})
 	if err != nil {
 		t.Fatal(err)

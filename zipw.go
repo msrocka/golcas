@@ -11,7 +11,7 @@ type ZipWriter struct {
 	writer *zip.Writer
 }
 
-func NewPackWriter(filePath string) (*ZipWriter, error) {
+func NewZipWriter(filePath string) (*ZipWriter, error) {
 	file, err := os.Create(filePath)
 	if err != nil {
 		return nil, err

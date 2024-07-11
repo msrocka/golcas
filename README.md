@@ -18,7 +18,7 @@ r, err := golcas.NewZipReader("path/to/file.zip")
 flow, err := r.ReadFlow("123abc")
 
 // read all flows
-err := r.EachFlow(func (flow *golcas.Flow) bool {
+err := r.EachFlow(func(flow *golcas.Flow) bool {
   // do something with the flwo
   return true
 })
